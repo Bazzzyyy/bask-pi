@@ -26,16 +26,12 @@ tts:
   openai_voice: alloy
 
 oled:
-  enabled: true
-  backend: auto  # auto | luma | mock
-  width: 240
-  height: 240
+  backend: ssd1306_spi   # bukan ST7789 240x240
+  width: 128
+  height: 64
   gpio:
-    spi_port: 0
-    spi_device: 0
-    dc_gpio: 24
-    reset_gpio: 25
-    backlight_gpio: 18
+    dc_gpio: 24          # DC modul → GPIO24 (pin 18)
+    reset_gpio: 25       # RST → GPIO25 (pin 22)
 
 llm:
   default_preset: gpt_4o_mini
