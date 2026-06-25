@@ -1,0 +1,16 @@
+[Unit]
+Description=Bask AI assistant
+After=network-online.target sound.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/bask-pi
+EnvironmentFile=-/etc/bask/bask.env
+ExecStart=/home/pi/bask-pi/.venv/bin/python -m bask.main --config /home/pi/bask-pi/config.yaml repl
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

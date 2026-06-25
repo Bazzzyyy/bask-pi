@@ -1,0 +1,50 @@
+# Copy to config.yaml and adjust. Paths are relative to project root unless absolute.
+
+assistant_name: Bask
+
+web:
+  host: "127.0.0.1"
+  port: 8765
+  # Set BASK_ADMIN_TOKEN env or put admin_token here (prefer env on Pi)
+  admin_token: "change-me-in-production"
+
+audio:
+  # ALSA device for TTS playback, e.g. "plughw:0,0" or leave empty for default
+  output_device: ""
+  # Input for STT recording (arecord -L)
+  input_device: ""
+  sample_rate: 16000
+
+stt:
+  provider: openai_whisper_api  # openai_whisper_api | none
+  model: whisper-1
+
+tts:
+  provider: piper  # piper | openai | none
+  piper_binary: piper
+  piper_voice: en_US-lessac-medium
+  openai_voice: alloy
+
+oled:
+  enabled: true
+  backend: auto  # auto | luma | mock
+  width: 240
+  height: 240
+  gpio:
+    spi_port: 0
+    spi_device: 0
+    dc_gpio: 24
+    reset_gpio: 25
+    backlight_gpio: 18
+
+llm:
+  default_preset: gpt_4o_mini
+  openai_base_url: "https://api.openai.com/v1"
+  deepseek_base_url: "https://api.deepseek.com/v1"
+  dashscope_base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+
+calendar:
+  credentials_path: secrets/google_client_secret.json
+  token_path: secrets/google_token.json
+
+database_path: data/bask.db
